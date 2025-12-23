@@ -12,6 +12,6 @@
     "cstil ",
     version,
     "\n",
-    "https://www.csids.no/csutil/"
+    "https://niphr.github.io/csutil/"
   ))
 }

@@ -2,8 +2,7 @@ Package: csutil
 Title: Common Base-R Problems Relating to Lists
 Version: 2023.4.25
 Authors@R: c(
-  person(c("Richard","Aubrey"), "White", email = "hello@rwhite.no", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-6747-1726")),
-  person(given = "CSIDS", role = c("cph"))
+  person(c("Richard","Aubrey"), "White", email = "hello@rwhite.no", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-6747-1726"))
   )
 Description: Utility functions that help with common base-R problems relating to lists.
     Lists in base-R are very flexible. This package provides functions to quickly and easily
@@ -13,8 +12,8 @@ Description: Utility functions that help with common base-R problems relating to
     groups, and the unnesting of data.frames within fully named lists.
 Depends: R (>= 3.3.0)
 License: MIT + file LICENSE
-URL: https://www.csids.no/csutil/, https://github.com/csids/csutil
-BugReports: https://github.com/csids/csutil/issues
+URL: https://niphr.github.io/csutil/, https://github.com/niphr/csutil
+BugReports: https://github.com/niphr/csutil/issues
 Encoding: UTF-8
 Imports: data.table,
     magrittr,
