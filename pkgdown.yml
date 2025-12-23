@@ -3,7 +3,7 @@ pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   csutil: csutil.html
-last_built: 2025-12-23T12:33Z
+last_built: 2025-12-23T12:41Z
 urls:
   reference: https://niphr.github.io/csutil/reference
   article: https://niphr.github.io/csutil/articles
