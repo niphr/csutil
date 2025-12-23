@@ -1,18 +1,18 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
-<url><loc>https://www.csids.no/csutil/404.html</loc></url>
-<url><loc>https://www.csids.no/csutil/LICENSE-text.html</loc></url>
-<url><loc>https://www.csids.no/csutil/articles/csutil.html</loc></url>
-<url><loc>https://www.csids.no/csutil/articles/index.html</loc></url>
-<url><loc>https://www.csids.no/csutil/authors.html</loc></url>
-<url><loc>https://www.csids.no/csutil/index.html</loc></url>
-<url><loc>https://www.csids.no/csutil/news/index.html</loc></url>
-<url><loc>https://www.csids.no/csutil/reference/apply_fn_via_hash_table.html</loc></url>
-<url><loc>https://www.csids.no/csutil/reference/easy_split.html</loc></url>
-<url><loc>https://www.csids.no/csutil/reference/index.html</loc></url>
-<url><loc>https://www.csids.no/csutil/reference/is_all_list_elements_null_or_df.html</loc></url>
-<url><loc>https://www.csids.no/csutil/reference/is_all_list_elements_null_or_fully_named_list.html</loc></url>
-<url><loc>https://www.csids.no/csutil/reference/is_all_list_elements_null_or_list.html</loc></url>
-<url><loc>https://www.csids.no/csutil/reference/is_fully_named_list.html</loc></url>
-<url><loc>https://www.csids.no/csutil/reference/unnest_dfs_within_list_of_fully_named_lists.html</loc></url>
+<url><loc>https://niphr.github.io/csutil/404.html</loc></url>
+<url><loc>https://niphr.github.io/csutil/LICENSE-text.html</loc></url>
+<url><loc>https://niphr.github.io/csutil/articles/csutil.html</loc></url>
+<url><loc>https://niphr.github.io/csutil/articles/index.html</loc></url>
+<url><loc>https://niphr.github.io/csutil/authors.html</loc></url>
+<url><loc>https://niphr.github.io/csutil/index.html</loc></url>
+<url><loc>https://niphr.github.io/csutil/news/index.html</loc></url>
+<url><loc>https://niphr.github.io/csutil/reference/apply_fn_via_hash_table.html</loc></url>
+<url><loc>https://niphr.github.io/csutil/reference/easy_split.html</loc></url>
+<url><loc>https://niphr.github.io/csutil/reference/index.html</loc></url>
+<url><loc>https://niphr.github.io/csutil/reference/is_all_list_elements_null_or_df.html</loc></url>
+<url><loc>https://niphr.github.io/csutil/reference/is_all_list_elements_null_or_fully_named_list.html</loc></url>
+<url><loc>https://niphr.github.io/csutil/reference/is_all_list_elements_null_or_list.html</loc></url>
+<url><loc>https://niphr.github.io/csutil/reference/is_fully_named_list.html</loc></url>
+<url><loc>https://niphr.github.io/csutil/reference/unnest_dfs_within_list_of_fully_named_lists.html</loc></url>
 </urlset>
 
