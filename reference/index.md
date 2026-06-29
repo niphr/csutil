@@ -1,0 +1,18 @@
+# Package index
+
+## All functions
+
+- [`apply_fn_via_hash_table()`](https://niphr.github.io/csutil/reference/apply_fn_via_hash_table.md)
+  : Apply a function via hash table
+- [`easy_split()`](https://niphr.github.io/csutil/reference/easy_split.md)
+  : Split a vector into a list of vectors
+- [`is_all_list_elements_null_or_df()`](https://niphr.github.io/csutil/reference/is_all_list_elements_null_or_df.md)
+  : Are all elements in a list null or data.frames?
+- [`is_all_list_elements_null_or_fully_named_list()`](https://niphr.github.io/csutil/reference/is_all_list_elements_null_or_fully_named_list.md)
+  : Are all elements in a list null or fully named lists?
+- [`is_all_list_elements_null_or_list()`](https://niphr.github.io/csutil/reference/is_all_list_elements_null_or_list.md)
+  : Are all elements in a list null or lists?
+- [`is_fully_named_list()`](https://niphr.github.io/csutil/reference/is_fully_named_list.md)
+  : Is this a fully named list?
+- [`unnest_dfs_within_list_of_fully_named_lists()`](https://niphr.github.io/csutil/reference/unnest_dfs_within_list_of_fully_named_lists.md)
+  : Unnest data.frames within fully named list
