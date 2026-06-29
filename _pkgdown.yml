@@ -1,5 +1,8 @@
 url: https://niphr.github.io/csutil/
 
+template:
+  package: cstemplate
+
 authors:
   footer:
     roles: [cre, aut]
