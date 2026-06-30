@@ -2,6 +2,10 @@
 
 ## Splitting
 
+[`easy_split()`](https://niphr.github.io/csutil/reference/easy_split.md)
+divides a vector into groups either by specifying the target size of
+each group or the total number of groups.
+
 ``` r
 csutil::easy_split(letters[1:20], size_of_each_group = 3)
 #> $`1`
@@ -35,7 +39,12 @@ csutil::easy_split(letters[1:20], number_of_groups = 3)
 #> [1] "o" "p" "q" "r" "s" "t"
 ```
 
-## Unnesting data.frames
+## Unnesting data frames within a list
+
+[`unnest_dfs_within_list_of_fully_named_lists()`](https://niphr.github.io/csutil/reference/unnest_dfs_within_list_of_fully_named_lists.md)
+collapses a list of named lists, each containing data frames, into a
+single flat list. Elements that share a name across the outer lists are
+row-bound together.
 
 ``` r
 x <- list(
@@ -93,6 +102,10 @@ csutil::unnest_dfs_within_list_of_fully_named_lists(x)
 
 ## Describing lists
 
+These predicates test structural properties of a list: whether every
+element is named, and whether every element is `NULL` or a particular
+type.
+
 ``` r
 csutil::is_fully_named_list(list(1))
 #> [1] FALSE
@@ -115,15 +128,14 @@ csutil::is_all_list_elements_null_or_fully_named_list(list(list("a" = 1), NULL))
 #> [1] TRUE
 ```
 
-## Apply a function via hash table
+## Applying a function via hash table
 
-This function extracts the unique input values, applies the given
-function to it to create a hash table (containing unique input/output
-combinations), and then matches the original input to the hash table to
-obtain the desired output.
-
-This can dramatically speed up computation if there is a lot of data and
-a limited amount of unique values.
+[`apply_fn_via_hash_table()`](https://niphr.github.io/csutil/reference/apply_fn_via_hash_table.md)
+extracts the unique values from the input, applies the given function
+once per unique value to build a lookup table, then maps the results
+back to the original input. When there are many repeated values, this
+avoids redundant computation and can be substantially faster than
+applying the function element-wise.
 
 ``` r
 input <- rep(seq(as.Date("2000-01-01"), as.Date("2020-01-01"), 1), 1000)
@@ -131,7 +143,7 @@ a1 <- Sys.time()
 z <- format(input, "%Y")
 a2 <- Sys.time()
 a2 - a1
-#> Time difference of 2.202573 secs
+#> Time difference of 2.294529 secs
 
 b1 <- Sys.time()
 z <- csutil::apply_fn_via_hash_table(
@@ -141,5 +153,5 @@ z <- csutil::apply_fn_via_hash_table(
 )
 b2 <- Sys.time()
 b2 - b1
-#> Time difference of 0.3793049 secs
+#> Time difference of 0.3860867 secs
 ```

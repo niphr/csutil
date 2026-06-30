@@ -81,6 +81,9 @@
 <div class="section level2">
 <h2 id="splitting">Splitting<a class="anchor" aria-label="anchor" href="#splitting"></a>
 </h2>
+<p><code><a href="../reference/easy_split.html">easy_split()</a></code> divides a vector into groups either by
+specifying the target size of each group or the total number of
+groups.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">csutil</span><span class="fu">::</span><span class="fu"><a href="../reference/easy_split.html">easy_split</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span><span class="op">]</span>, size_of_each_group <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $`1`</span></span>
@@ -114,8 +117,12 @@
 <span><span class="co">#&gt; [1] "o" "p" "q" "r" "s" "t"</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="unnesting-data-frames">Unnesting data.frames<a class="anchor" aria-label="anchor" href="#unnesting-data-frames"></a>
+<h2 id="unnesting-data-frames-within-a-list">Unnesting data frames within a list<a class="anchor" aria-label="anchor" href="#unnesting-data-frames-within-a-list"></a>
 </h2>
+<p><code><a href="../reference/unnest_dfs_within_list_of_fully_named_lists.html">unnest_dfs_within_list_of_fully_named_lists()</a></code> collapses
+a list of named lists, each containing data frames, into a single flat
+list. Elements that share a name across the outer lists are row-bound
+together.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
@@ -172,6 +179,9 @@
 <div class="section level2">
 <h2 id="describing-lists">Describing lists<a class="anchor" aria-label="anchor" href="#describing-lists"></a>
 </h2>
+<p>These predicates test structural properties of a list: whether every
+element is named, and whether every element is <code>NULL</code> or a
+particular type.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">csutil</span><span class="fu">::</span><span class="fu"><a href="../reference/is_fully_named_list.html">is_fully_named_list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] FALSE</span></span>
@@ -194,21 +204,21 @@
 <span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="apply-a-function-via-hash-table">Apply a function via hash table<a class="anchor" aria-label="anchor" href="#apply-a-function-via-hash-table"></a>
+<h2 id="applying-a-function-via-hash-table">Applying a function via hash table<a class="anchor" aria-label="anchor" href="#applying-a-function-via-hash-table"></a>
 </h2>
-<p>This function extracts the unique input values, applies the given
-function to it to create a hash table (containing unique input/output
-combinations), and then matches the original input to the hash table to
-obtain the desired output.</p>
-<p>This can dramatically speed up computation if there is a lot of data
-and a limited amount of unique values.</p>
+<p><code><a href="../reference/apply_fn_via_hash_table.html">apply_fn_via_hash_table()</a></code> extracts the unique values
+from the input, applies the given function once per unique value to
+build a lookup table, then maps the results back to the original input.
+When there are many repeated values, this avoids redundant computation
+and can be substantially faster than applying the function
+element-wise.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">input</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"2000-01-01"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"2020-01-01"</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span>, <span class="fl">1000</span><span class="op">)</span></span>
 <span><span class="va">a1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">input</span>, <span class="st">"%Y"</span><span class="op">)</span></span>
 <span><span class="va">a2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">a2</span> <span class="op">-</span> <span class="va">a1</span></span>
-<span><span class="co">#&gt; Time difference of 2.202573 secs</span></span>
+<span><span class="co">#&gt; Time difference of 2.294529 secs</span></span>
 <span></span>
 <span><span class="va">b1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu">csutil</span><span class="fu">::</span><span class="fu"><a href="../reference/apply_fn_via_hash_table.html">apply_fn_via_hash_table</a></span><span class="op">(</span></span>
@@ -218,7 +228,7 @@ and a limited amount of unique values.</p>
 <span><span class="op">)</span></span>
 <span><span class="va">b2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">b2</span> <span class="op">-</span> <span class="va">b1</span></span>
-<span><span class="co">#&gt; Time difference of 0.3793049 secs</span></span></code></pre></div>
+<span><span class="co">#&gt; Time difference of 0.3860867 secs</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
