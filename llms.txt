@@ -1,10 +1,3 @@
-# csutil
-
-[![CRAN
-status](https://www.r-pkg.org/badges/version/csutil)](https://cran.r-project.org/package=csutil)
-[![CRAN
-downloads](https://cranlogs.r-pkg.org/badges/csutil)](https://cran.r-project.org/package=csutil)
-
 ## Overview
 
 [csutil](https://niphr.github.io/csutil/) contains helpful functions to
