@@ -2,6 +2,21 @@ url: https://niphr.github.io/csutil/
 
 template:
   package: cstemplate
+  params:
+    hero:
+      overline: "R package · List utilities"
+      title: "Base-R list utilities."
+      lede: >
+        Utility functions for common base-R problems with lists — characterise list
+        types, split lists into equal groups, and unnest data frames within named
+        lists.
+      cta:
+        primary:
+          text: "Get started"
+          href: "articles/csutil.html"
+        secondary:
+          text: "Browse the reference →"
+          href: "reference/index.html"
 
 authors:
   footer:
