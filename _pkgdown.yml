@@ -18,6 +18,21 @@ template:
           text: "Browse the reference →"
           href: "reference/index.html"
 
+reference:
+  - title: "List predicates"
+    desc: "Inspect and characterise list structure."
+    contents:
+      - is_fully_named_list
+      - is_all_list_elements_null_or_df
+      - is_all_list_elements_null_or_fully_named_list
+      - is_all_list_elements_null_or_list
+  - title: "List manipulation"
+    desc: "Split, unnest, and transform lists."
+    contents:
+      - easy_split
+      - unnest_dfs_within_list_of_fully_named_lists
+      - apply_fn_via_hash_table
+
 authors:
   footer:
     roles: [cre, aut]
