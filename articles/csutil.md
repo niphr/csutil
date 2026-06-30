@@ -131,7 +131,7 @@ a1 <- Sys.time()
 z <- format(input, "%Y")
 a2 <- Sys.time()
 a2 - a1
-#> Time difference of 2.287873 secs
+#> Time difference of 2.202573 secs
 
 b1 <- Sys.time()
 z <- csutil::apply_fn_via_hash_table(
@@ -141,5 +141,5 @@ z <- csutil::apply_fn_via_hash_table(
 )
 b2 <- Sys.time()
 b2 - b1
-#> Time difference of 0.3994842 secs
+#> Time difference of 0.3793049 secs
 ```
