@@ -1,14 +1,25 @@
 #' Apply a function via hash table
 #'
-#' This function extracts the unique input values, applies the given function to
-#' it to create a hash table (containing unique input/output combinations), and
-#' then matches the original input to the hash table to obtain the desired output.
+#' Extracts the unique values of \code{x}, applies \code{fn} to those unique
+#' values, and maps the results back to the original vector. This avoids
+#' redundant computation when \code{x} contains many repeated values.
 #'
+#' @details
 #' This can dramatically speed up computation if there is a lot of data and
-#' a limited amount of unique values.
-#' @param x A vector data that needs a function applied to it.
-#' @param fn A function that will be applied to x.
-#' @param ... Arguments that will be passed to `fn`.
+#' a limited number of unique values: \code{fn} is called once per unique value
+#' rather than once per element.
+#' @param x A vector whose values need a function applied.
+#' @param fn A function to apply to the unique values of \code{x}.
+#' @param ... Additional arguments passed to \code{fn}.
+#' @return A vector of the same length as \code{x}, containing the result of
+#'   applying \code{fn} to each element (computed via unique-value lookup).
+#' @examples
+#' x <- c("a", "b", "a", "c", "b", "a")
+#' apply_fn_via_hash_table(x, toupper)
+#'
+#' # passing extra arguments to fn
+#' nums <- c(1.1, 2.2, 1.1, 3.3)
+#' apply_fn_via_hash_table(nums, round, digits = 0)
 #' @export
 apply_fn_via_hash_table <- function(x, fn, ...){
   . <- NULL
