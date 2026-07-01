@@ -23,12 +23,3 @@ size of each group or the total number of groups.
 [`unnest_dfs_within_list_of_fully_named_lists()`](https://niphr.github.io/csutil/reference/unnest_dfs_within_list_of_fully_named_lists.md)
 row-binds same-named data frames across a list of named lists into a
 single flat list.
-
-## Overview
-
-[csutil](https://niphr.github.io/csutil/) contains helpful functions to
-help with common base-R problems.
-
-Read the introduction vignette
-[here](https://niphr.github.io/csutil/articles/csutil.html) or run
-[`help(package="csutil")`](https://niphr.github.io/csutil/reference).
