@@ -51,6 +51,7 @@
 <ul><li>
 <code>.Rbuildignore</code> now excludes the rendered pkgdown site (<code>docs/</code>, <code>pkgdown/</code>) so it is not included in the source tarball.</li>
 <li>The four <code>is_*</code> list predicates now cross-reference each other via <code>@family list predicates</code>.</li>
+<li>Added a <code>testthat</code> (edition 3) test suite covering all seven exported functions. The suite pins the shipped behaviour, including the deliberate asymmetry where <code>is_fully_named_list(list())</code> returns <code>FALSE</code> while the three <code>is_all_list_elements_null_or_*()</code> predicates return <code>TRUE</code>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2023.4.25" id="version-2023425">Version 2023.4.25<a class="anchor" aria-label="anchor" href="#version-2023425"></a></h2><p class="text-muted">CRAN release: 2023-04-25</p>

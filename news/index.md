@@ -6,6 +6,11 @@
   `pkgdown/`) so it is not included in the source tarball.
 - The four `is_*` list predicates now cross-reference each other via
   `@family list predicates`.
+- Added a `testthat` (edition 3) test suite covering all seven exported
+  functions. The suite pins the shipped behaviour, including the
+  deliberate asymmetry where `is_fully_named_list(list())` returns
+  `FALSE` while the three `is_all_list_elements_null_or_*()` predicates
+  return `TRUE`.
 
 ## Version 2023.4.25
 
