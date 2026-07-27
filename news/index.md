@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 2026.7.27
+
+- `.Rbuildignore` now excludes the rendered pkgdown site (`docs/`,
+  `pkgdown/`) so it is not included in the source tarball.
+- The four `is_*` list predicates now cross-reference each other via
+  `@family list predicates`.
+
 ## Version 2023.4.25
 
 CRAN release: 2023-04-25

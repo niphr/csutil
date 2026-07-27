@@ -19,6 +19,13 @@ is_all_list_elements_null_or_list(x)
 
 Boolean.
 
+## See also
+
+Other list predicates:
+[`is_all_list_elements_null_or_df()`](https://niphr.github.io/csutil/reference/is_all_list_elements_null_or_df.md),
+[`is_all_list_elements_null_or_fully_named_list()`](https://niphr.github.io/csutil/reference/is_all_list_elements_null_or_fully_named_list.md),
+[`is_fully_named_list()`](https://niphr.github.io/csutil/reference/is_fully_named_list.md)
+
 ## Examples
 
 ``` r
