@@ -26,3 +26,10 @@ is_all_list_elements_null_or_fully_named_list(list(list(), NULL))
 is_all_list_elements_null_or_fully_named_list(list(list("a" = 1), NULL))
 is_all_list_elements_null_or_fully_named_list(list("a"=1, 2))
 }
+\seealso{
+Other list predicates:
+\code{\link[=is_all_list_elements_null_or_df]{is_all_list_elements_null_or_df()}},
+\code{\link[=is_all_list_elements_null_or_list]{is_all_list_elements_null_or_list()}},
+\code{\link[=is_fully_named_list]{is_fully_named_list()}}
+}
+\concept{list predicates}

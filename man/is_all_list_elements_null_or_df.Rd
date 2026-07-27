@@ -22,3 +22,10 @@ is_all_list_elements_null_or_df(list(1, NULL))
 is_all_list_elements_null_or_df(list(data.frame(), NULL))
 is_all_list_elements_null_or_df(list("a"=1, 2))
 }
+\seealso{
+Other list predicates:
+\code{\link[=is_all_list_elements_null_or_fully_named_list]{is_all_list_elements_null_or_fully_named_list()}},
+\code{\link[=is_all_list_elements_null_or_list]{is_all_list_elements_null_or_list()}},
+\code{\link[=is_fully_named_list]{is_fully_named_list()}}
+}
+\concept{list predicates}

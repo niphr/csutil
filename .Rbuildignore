@@ -6,5 +6,7 @@ cran-comments.md
 license.md
 ^CRAN-SUBMISSION$
 ^doc$
+^docs$
+^pkgdown$
 ^Meta$
 @eaDir

@@ -8,6 +8,7 @@
 #' is_fully_named_list(list(1))
 #' is_fully_named_list(list("a"=1))
 #' is_fully_named_list(list("a"=1, 2))
+#' @family list predicates
 #' @return Boolean.
 #' @export
 is_fully_named_list <- function(x){
@@ -35,6 +36,7 @@ is_fully_named_list <- function(x){
 #' is_all_list_elements_null_or_df(list(1, NULL))
 #' is_all_list_elements_null_or_df(list(data.frame(), NULL))
 #' is_all_list_elements_null_or_df(list("a"=1, 2))
+#' @family list predicates
 #' @return Boolean.
 #' @export
 is_all_list_elements_null_or_df <- function(x){
@@ -58,6 +60,7 @@ is_all_list_elements_null_or_df <- function(x){
 #' is_all_list_elements_null_or_list(list(1, NULL))
 #' is_all_list_elements_null_or_list(list(list(), NULL))
 #' is_all_list_elements_null_or_list(list("a"=1, 2))
+#' @family list predicates
 #' @return Boolean.
 #' @export
 is_all_list_elements_null_or_list <- function(x){
@@ -84,6 +87,7 @@ is_all_list_elements_null_or_list <- function(x){
 #' is_all_list_elements_null_or_fully_named_list(list(list(), NULL))
 #' is_all_list_elements_null_or_fully_named_list(list(list("a" = 1), NULL))
 #' is_all_list_elements_null_or_fully_named_list(list("a"=1, 2))
+#' @family list predicates
 #' @return Boolean.
 #' @export
 is_all_list_elements_null_or_fully_named_list <- function(x){

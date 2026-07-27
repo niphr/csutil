@@ -1,3 +1,8 @@
+# Version 2026.7.27
+
+- `.Rbuildignore` now excludes the rendered pkgdown site (`docs/`, `pkgdown/`) so it is not included in the source tarball.
+- The four `is_*` list predicates now cross-reference each other via `@family list predicates`.
+
 # Version 2023.4.25
 
 - `apply_fn_via_hash_table` extracts the unique input values, applies the given function to it to create a hash table (containing unique input/output combinations), and then matches the original input to the hash table to obtain the desired output. This can dramatically speed up computation if there is a lot of data and a limited amount of unique values.
