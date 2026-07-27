@@ -26,3 +26,4 @@ Suggests: testthat,
 VignetteBuilder: knitr
 Config/Needs/website: niphr/cstemplate
 Config/roxygen2/version: 8.0.0
+Config/testthat/edition: 3
