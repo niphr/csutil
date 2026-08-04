@@ -1,6 +1,8 @@
 # Split a vector into a list of vectors
 
-Easily split a list into a list of equally sized vectors.
+Splits `x` into a list of consecutive groups. Specify exactly one of
+`size_of_each_group` or `number_of_groups`; supplying neither, or
+supplying both, is an error.
 
 ## Usage
 
@@ -12,27 +14,39 @@ easy_split(x, size_of_each_group = NULL, number_of_groups = NULL)
 
 - x:
 
-  The vector to be split
+  The vector to be split.
 
 - size_of_each_group:
 
-  If you want to split \`x\` into a number of groups, each of
-  \`size_of_each_group\` size
+  The number of elements in each group. The last group may hold fewer.
 
 - number_of_groups:
 
-  How many equally sized groups do you want?
+  The number of groups requested. Fewer groups than requested can be
+  returned; see Details.
 
 ## Value
 
-A list containing equally sized vectors.
+A list of vectors, holding the elements of `x` in their original order.
+Every element has the same length except the last, which may be shorter.
 
 ## Details
 
-You can either specify the length of the list (via \`number_of_groups\`)
-or the length of the equally sized vectors within each list element (via
-\`size_of_each_group\`). The last element of the list can be shorter
-than the other elements.
+Every group has the same length except the last, which may be shorter.
+The original order of `x` is preserved, and the list elements are named
+`"1"`, `"2"` and so on.
+
+`number_of_groups` is a request, not a guarantee. The group size is
+computed as `ceiling(length(x) / number_of_groups)`, so the number of
+groups actually returned is
+`ceiling(length(x) / ceiling(length(x) / number_of_groups))`, which can
+be smaller than `number_of_groups`. For example,
+`easy_split(1:4, number_of_groups = 3)` returns two groups of two.
+
+## See also
+
+[`vignette("csutil", package = "csutil")`](https://niphr.github.io/csutil/articles/csutil.md),
+which splits `letters[1:20]` both ways.
 
 ## Examples
 
@@ -68,5 +82,14 @@ easy_split(letters[1:20], number_of_groups = 3)
 #> 
 #> $`3`
 #> [1] "o" "p" "q" "r" "s" "t"
+#> 
+
+# number_of_groups is a request: this asks for 3 groups and returns 2
+easy_split(1:4, number_of_groups = 3)
+#> $`1`
+#> [1] 1 2
+#> 
+#> $`2`
+#> [1] 3 4
 #> 
 ```

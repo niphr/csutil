@@ -32,7 +32,26 @@ unnest_dfs_within_list_of_fully_named_lists(
 
 ## Value
 
-Fully named list, each element containing a data.table.
+A fully named list, each element a `data.table`. `NULL` if `x` is not a
+list.
+
+## Details
+
+When every element of `x` is `NULL` or a `data.frame`, those elements
+are row-bound into a single `data.table`, which is returned in a
+length-1 list named by `returned_name_when_dfs_are_not_nested`.
+
+Otherwise every element of `x` must be `NULL` or a fully named list, and
+the function stops with an error if one of them is not. The returned
+list is named by the sorted union of the inner names, and each element
+is the
+[`data.table::rbindlist()`](https://rdrr.io/pkg/data.table/man/rbindlist.html)
+of the inner elements that carry that name.
+
+## See also
+
+[`vignette("csutil", package = "csutil")`](https://niphr.github.io/csutil/articles/csutil.md),
+which unnests a two-element list of fully named lists.
 
 ## Examples
 

@@ -18,7 +18,8 @@ apply_fn_via_hash_table(x, fn, ...)
 
 - fn:
 
-  A function to apply to the unique values of `x`.
+  A vectorised function, called once on the vector of unique values of
+  `x`.
 
 - ...:
 
@@ -26,14 +27,26 @@ apply_fn_via_hash_table(x, fn, ...)
 
 ## Value
 
-A vector of the same length as `x`, containing the result of applying
-`fn` to each element (computed via unique-value lookup).
+A vector of the same length as `x`, holding the value of `fn` for each
+element (computed via unique-value lookup). The result takes its class
+from the value `fn` returns.
 
 ## Details
 
+`fn` is called exactly once, on the vector of unique values of `x`. It
+is not called once per element, and it is not called once per unique
+value either. `fn` must therefore be vectorised: it receives the whole
+vector of unique values in a single call.
+
 This can dramatically speed up computation if there is a lot of data and
-a limited number of unique values: `fn` is called once per unique value
-rather than once per element.
+a limited number of unique values, because the work `fn` does scales
+with the number of unique values rather than with the length of `x`.
+
+## See also
+
+[`vignette("csutil", package = "csutil")`](https://niphr.github.io/csutil/articles/csutil.md),
+which times this function against a direct call to
+[`format()`](https://rdrr.io/r/base/format.html).
 
 ## Examples
 
