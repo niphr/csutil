@@ -5,14 +5,23 @@
 #' redundant computation when \code{x} contains many repeated values.
 #'
 #' @details
+#' \code{fn} is called exactly once, on the vector of unique values of
+#' \code{x}. It is not called once per element, and it is not called once per
+#' unique value either. \code{fn} must therefore be vectorised: it receives the
+#' whole vector of unique values in a single call.
+#'
 #' This can dramatically speed up computation if there is a lot of data and
-#' a limited number of unique values: \code{fn} is called once per unique value
-#' rather than once per element.
+#' a limited number of unique values, because the work \code{fn} does scales
+#' with the number of unique values rather than with the length of \code{x}.
 #' @param x A vector whose values need a function applied.
-#' @param fn A function to apply to the unique values of \code{x}.
+#' @param fn A vectorised function, called once on the vector of unique values
+#'   of \code{x}.
 #' @param ... Additional arguments passed to \code{fn}.
-#' @return A vector of the same length as \code{x}, containing the result of
-#'   applying \code{fn} to each element (computed via unique-value lookup).
+#' @return A vector of the same length as \code{x}, holding the value of
+#'   \code{fn} for each element (computed via unique-value lookup). The result
+#'   takes its class from the value \code{fn} returns.
+#' @seealso \code{vignette("csutil", package = "csutil")}, which times this
+#'   function against a direct call to \code{format()}.
 #' @examples
 #' x <- c("a", "b", "a", "c", "b", "a")
 #' apply_fn_via_hash_table(x, toupper)
@@ -21,7 +30,7 @@
 #' nums <- c(1.1, 2.2, 1.1, 3.3)
 #' apply_fn_via_hash_table(nums, round, digits = 0)
 #' @export
-apply_fn_via_hash_table <- function(x, fn, ...){
+apply_fn_via_hash_table <- function(x, fn, ...) {
   . <- NULL
   input <- NULL
   output <- NULL
@@ -32,4 +41,3 @@ apply_fn_via_hash_table <- function(x, fn, ...){
 
   return(match[.(x)]$output)
 }
-

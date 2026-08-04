@@ -1,3 +1,13 @@
+# Version 2026.8.4
+
+- `.Rbuildignore` now excludes `index.md` and `Rplots.pdf`, so the pkgdown home page body no longer ships in the source tarball and no longer raises a top-level-file `NOTE`.
+- Expanded `README.md` with installation, a quick start, and a table naming which function to reach for.
+- Every exported function now carries an `@seealso` pointing at the `csutil` vignette. All seven appear in a vignette code chunk.
+- Corrected `apply_fn_via_hash_table()`: the documentation said `fn` was called once per unique value. It is called exactly once, on the whole vector of unique values, so `fn` must be vectorised.
+- Corrected `easy_split()`: the documentation promised "equally sized vectors". Every group has the same length except the last, which may be shorter. `number_of_groups` is also a request rather than a guarantee — `easy_split(1:4, number_of_groups = 3)` returns two groups, not three.
+- Corrected `unnest_dfs_within_list_of_fully_named_lists()`: it returns `NULL` when `x` is not a list, which the `@return` section did not say. Documented both branches and the sorted-union naming of the result.
+- Documented that `is_fully_named_list(list())` returns `FALSE`.
+
 # Version 2026.7.27
 
 - `.Rbuildignore` now excludes the rendered pkgdown site (`docs/`, `pkgdown/`) so it is not included in the source tarball.

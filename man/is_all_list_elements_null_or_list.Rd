@@ -10,7 +10,7 @@ is_all_list_elements_null_or_list(x)
 \item{x}{An object}
 }
 \value{
-Boolean.
+\code{TRUE} or \code{FALSE}.
 }
 \description{
 Checks if A) `x` is a list, B) All elements in `x` are either null or list.
@@ -23,6 +23,9 @@ is_all_list_elements_null_or_list(list(list(), NULL))
 is_all_list_elements_null_or_list(list("a"=1, 2))
 }
 \seealso{
+\code{vignette("csutil", package = "csutil")}, which runs all four
+  predicates on small example lists.
+
 Other list predicates:
 \code{\link[=is_all_list_elements_null_or_df]{is_all_list_elements_null_or_df()}},
 \code{\link[=is_all_list_elements_null_or_fully_named_list]{is_all_list_elements_null_or_fully_named_list()}},

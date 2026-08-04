@@ -10,10 +10,15 @@ is_fully_named_list(x)
 \item{x}{An object}
 }
 \value{
-Boolean.
+\code{TRUE} or \code{FALSE}.
 }
 \description{
 Checks if `x` is a list with each element named.
+}
+\details{
+The empty list is a special case: \code{is_fully_named_list(list())} returns
+\code{FALSE}, because a fully named list must have at least one element. The
+other three predicates in this family return \code{TRUE} for \code{list()}.
 }
 \examples{
 is_fully_named_list(list())
@@ -22,6 +27,9 @@ is_fully_named_list(list("a"=1))
 is_fully_named_list(list("a"=1, 2))
 }
 \seealso{
+\code{vignette("csutil", package = "csutil")}, which runs all four
+  predicates on small example lists.
+
 Other list predicates:
 \code{\link[=is_all_list_elements_null_or_df]{is_all_list_elements_null_or_df()}},
 \code{\link[=is_all_list_elements_null_or_fully_named_list]{is_all_list_elements_null_or_fully_named_list()}},

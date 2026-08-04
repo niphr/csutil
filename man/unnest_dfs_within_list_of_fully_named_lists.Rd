@@ -18,13 +18,25 @@ unnest_dfs_within_list_of_fully_named_lists(
 \item{...}{parameters passed to data.table::rbindlist}
 }
 \value{
-Fully named list, each element containing a data.table.
+A fully named list, each element a \code{data.table}. \code{NULL} if
+  \code{x} is not a list.
 }
 \description{
 Consider the situation where a function returns a list containing two data.frames.
 If this function is called repeatedly and the return values are stored in a list,
 we will have a list of fully named lists (each of which contains a data.frame).
 Typically, we want to extract the two data.frames from this nested list structure (and rbindlist them).
+}
+\details{
+When every element of \code{x} is \code{NULL} or a \code{data.frame}, those
+elements are row-bound into a single \code{data.table}, which is returned in
+a length-1 list named by \code{returned_name_when_dfs_are_not_nested}.
+
+Otherwise every element of \code{x} must be \code{NULL} or a fully named
+list, and the function stops with an error if one of them is not. The
+returned list is named by the sorted union of the inner names, and each
+element is the \code{data.table::rbindlist()} of the inner elements that
+carry that name.
 }
 \examples{
 x <- list(
@@ -55,4 +67,8 @@ csutil::unnest_dfs_within_list_of_fully_named_lists(
   returned_name_when_dfs_are_not_nested = "NAME",
   fill = TRUE
 )
+}
+\seealso{
+\code{vignette("csutil", package = "csutil")}, which unnests a
+  two-element list of fully named lists.
 }

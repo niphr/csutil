@@ -7,24 +7,44 @@
 easy_split(x, size_of_each_group = NULL, number_of_groups = NULL)
 }
 \arguments{
-\item{x}{The vector to be split}
+\item{x}{The vector to be split.}
 
-\item{size_of_each_group}{If you want to split `x` into a number of groups, each of `size_of_each_group` size}
+\item{size_of_each_group}{The number of elements in each group. The last
+group may hold fewer.}
 
-\item{number_of_groups}{How many equally sized groups do you want?}
+\item{number_of_groups}{The number of groups requested. Fewer groups than
+requested can be returned; see Details.}
 }
 \value{
-A list containing equally sized vectors.
+A list of vectors, holding the elements of \code{x} in their original
+  order. Every element has the same length except the last, which may be
+  shorter.
 }
 \description{
-Easily split a list into a list of equally sized vectors.
+Splits \code{x} into a list of consecutive groups. Specify exactly one of
+\code{size_of_each_group} or \code{number_of_groups}; supplying neither, or
+supplying both, is an error.
 }
 \details{
-You can either specify the length of the list (via `number_of_groups`) or
-the length of the equally sized vectors within each list element (via `size_of_each_group`).
-The last element of the list can be shorter than the other elements.
+Every group has the same length except the last, which may be shorter. The
+original order of \code{x} is preserved, and the list elements are named
+\code{"1"}, \code{"2"} and so on.
+
+\code{number_of_groups} is a request, not a guarantee. The group size is
+computed as \code{ceiling(length(x) / number_of_groups)}, so the number of
+groups actually returned is
+\code{ceiling(length(x) / ceiling(length(x) / number_of_groups))}, which can
+be smaller than \code{number_of_groups}. For example,
+\code{easy_split(1:4, number_of_groups = 3)} returns two groups of two.
 }
 \examples{
 easy_split(letters[1:20], size_of_each_group = 3)
 easy_split(letters[1:20], number_of_groups = 3)
+
+# number_of_groups is a request: this asks for 3 groups and returns 2
+easy_split(1:4, number_of_groups = 3)
+}
+\seealso{
+\code{vignette("csutil", package = "csutil")}, which splits
+  \code{letters[1:20]} both ways.
 }

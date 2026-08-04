@@ -8,5 +8,7 @@ license.md
 ^doc$
 ^docs$
 ^pkgdown$
+^index\.md$
+^Rplots\.pdf$
 ^Meta$
 @eaDir
