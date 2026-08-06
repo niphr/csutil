@@ -18,7 +18,12 @@ knitr::opts_chunk$set(
 
 ## What csutil is for
 
-Lists in base R are very flexible. That flexibility makes them awkward to check and awkward to take apart. csutil is a small set of helpers for four of those awkward jobs: splitting a vector into groups, pulling data frames out of a nested named list, checking what a list actually holds, and running a function on the distinct values of a vector instead of on every element.
+Lists in base R are very flexible. That flexibility makes them awkward to check and awkward to take apart. csutil is a small set of helpers for four of those awkward jobs:
+
+- splitting a vector into groups;
+- pulling data frames out of a nested named list;
+- checking what a list actually holds;
+- running a function on the unique values of a vector instead of on every element.
 
 The package is deliberately tiny. It has seven exported functions and nothing else.
 
@@ -35,11 +40,11 @@ The package is deliberately tiny. It has seven exported functions and nothing el
 
 - `easy_split()` cuts a vector into consecutive groups.
 - `unnest_dfs_within_list_of_fully_named_lists()` flattens a list of named lists that hold data frames. Elements that share a name are row-bound together.
-- `apply_fn_via_hash_table()` computes a result for the distinct values of a vector, then maps it back to the original vector.
+- `apply_fn_via_hash_table()` computes a result for the unique values of a vector, then maps it back to the original vector.
 
 ## Two things that surprise people
 
-**`apply_fn_via_hash_table()` calls your function once, not once per value.** It hands the whole vector of distinct values over in a single call. Your function must therefore be vectorised. Here is a counter that proves it:
+**`apply_fn_via_hash_table()` calls your function once, not once per value.** It hands the whole vector of unique values over in a single call. Your function MUST therefore be vectorised. Here is a counter that proves it:
 
 ```{r}
 counter <- new.env()
@@ -57,7 +62,7 @@ length(unique(x))
 counter$calls
 ```
 
-Five elements, three distinct values, one call.
+Five elements, three unique values, one call.
 
 A function that only handles one value at a time will fail:
 
@@ -73,7 +78,7 @@ tryCatch(
 )
 ```
 
-**`easy_split()` can return fewer groups than you asked for.** `number_of_groups` is a request, not a promise. The group size is worked out first, as `ceiling(length(x) / number_of_groups)`, and the number of groups falls out of that. Ask for three groups from a four-element vector and you get two:
+**`easy_split()` can return fewer groups than you asked for.** `number_of_groups` is a request, not a guarantee. The function works out the group size first, as `ceiling(length(x) / number_of_groups)`. The number of groups falls out of that. Ask for three groups from a four-element vector and you get two:
 
 ```{r}
 csutil::easy_split(1:4, number_of_groups = 3)
@@ -87,7 +92,7 @@ csdb imports csutil. csutil imports no cs\* package, only data.table, magrittr a
 
 ## Splitting
 
-`easy_split()` divides a vector into groups either by specifying the target size of each group or the total number of groups.
+`easy_split()` divides a vector into groups. Give it either the target size of each group or the total number of groups.
 
 ```{r}
 csutil::easy_split(letters[1:20], size_of_each_group = 3)
@@ -96,7 +101,7 @@ csutil::easy_split(letters[1:20], number_of_groups = 3)
 
 ## Unnesting data frames within a list
 
-`unnest_dfs_within_list_of_fully_named_lists()` collapses a list of named lists, each containing data frames, into a single flat list. Elements that share a name across the outer lists are row-bound together.
+`unnest_dfs_within_list_of_fully_named_lists()` collapses a list of named lists, each of which holds data frames, into a single flat list. Elements that share a name across the outer lists are row-bound together.
 
 ```{r}
 x <- list(
@@ -134,7 +139,7 @@ csutil::is_all_list_elements_null_or_fully_named_list(list(list("a" = 1), NULL))
 
 ## Applying a function via hash table
 
-`apply_fn_via_hash_table()` extracts the unique values from the input, applies the given function once per unique value to build a lookup table, then maps the results back to the original input. When there are many repeated values, this avoids redundant computation and can be substantially faster than applying the function element-wise.
+`apply_fn_via_hash_table()` extracts the unique values from the input. It calls the given function ONCE, on that whole vector of unique values, to build a lookup table. It then maps the results back to the original input. Your function MUST therefore be vectorised, as the counter above shows. When many values repeat, this avoids redundant computation and can be much faster than applying the function element by element.
 
 ```{r}
 input <- rep(seq(as.Date("2000-01-01"), as.Date("2020-01-01"), 1), 1000)

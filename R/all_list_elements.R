@@ -3,7 +3,7 @@
 #' Checks if `x` is a list with each element named.
 #'
 #' @details
-#' The empty list is a special case: \code{is_fully_named_list(list())} returns
+#' The empty list is a special case. \code{is_fully_named_list(list())} returns
 #' \code{FALSE}, because a fully named list must have at least one element. The
 #' other three predicates in this family return \code{TRUE} for \code{list()}.
 #' @param x An object
@@ -33,7 +33,8 @@ is_fully_named_list <- function(x) {
 
 #' Are all elements in a list null or data.frames?
 #'
-#' Checks if A) `x` is a list, B) All elements in `x` are either null or data.frame.
+#' Checks two things: that `x` is a list, and that all elements in `x` are
+#' `NULL` or data.frames.
 #'
 #' @param x An object
 #' @examples
@@ -61,7 +62,8 @@ is_all_list_elements_null_or_df <- function(x) {
 
 #' Are all elements in a list null or lists?
 #'
-#' Checks if A) `x` is a list, B) All elements in `x` are either null or list.
+#' Checks two things: that `x` is a list, and that all elements in `x` are
+#' `NULL` or lists.
 #'
 #' @param x An object
 #' @examples
@@ -89,9 +91,10 @@ is_all_list_elements_null_or_list <- function(x) {
 
 #' Are all elements in a list null or fully named lists?
 #'
-#' Checks if A) `x` is a list, B) All elements in `x` are either null or fully named lists.
+#' Checks two things: that `x` is a list, and that all elements in `x` are
+#' `NULL` or fully named lists.
 #'
-#' Fully named lists are lists with each element having a name.
+#' A fully named list is a list in which every element has a name.
 #'
 #' @param x An object
 #' @examples

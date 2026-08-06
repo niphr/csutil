@@ -16,7 +16,7 @@ is_fully_named_list(x)
 Checks if `x` is a list with each element named.
 }
 \details{
-The empty list is a special case: \code{is_fully_named_list(list())} returns
+The empty list is a special case. \code{is_fully_named_list(list())} returns
 \code{FALSE}, because a fully named list must have at least one element. The
 other three predicates in this family return \code{TRUE} for \code{list()}.
 }

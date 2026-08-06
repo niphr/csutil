@@ -5,9 +5,9 @@
 
 ## Overview 
 
-[csutil](https://niphr.github.io/csutil/) contains helpful functions to help with common base-R problems.
+[csutil](https://niphr.github.io/csutil/) holds functions that help with common base-R problems.
 
-Base-R lists are flexible, and that flexibility makes them awkward to check. csutil supplies seven functions: four that answer a yes/no question about the shape of a list, and three that transform a vector or a list. The package defines no S3 classes and keeps no state between calls.
+Base-R lists are flexible, and that flexibility makes them awkward to check. csutil supplies seven functions. Four answer a yes/no question about the shape of a list. Three transform a vector or a list. The package defines no S3 classes and keeps no state between calls.
 
 ## Installation
 
@@ -23,7 +23,7 @@ remotes::install_github("niphr/csutil")
 ```r
 library(csutil)
 
-# compute on the distinct values only, then map the answers back
+# compute on the unique values only, then map the answers back
 x <- c("oslo", "bergen", "oslo", "tromso", "oslo")
 apply_fn_via_hash_table(x, toupper)
 #> [1] "OSLO"   "BERGEN" "OSLO"   "TROMSO" "OSLO"
@@ -50,12 +50,12 @@ easy_split(1:7, size_of_each_group = 3)
 | Is every element either `NULL` or a fully named list? | `is_all_list_elements_null_or_fully_named_list()` |
 | Chop a vector into groups of a fixed size, or into a requested number of groups | `easy_split()` |
 | Gather repeated results into one `data.table` per name | `unnest_dfs_within_list_of_fully_named_lists()` |
-| Skip repeated work when a long vector holds few distinct values | `apply_fn_via_hash_table()` |
+| Skip repeated work when a long vector holds few unique values | `apply_fn_via_hash_table()` |
 
-Each of the four questions is answered with `TRUE` or `FALSE`, never `NA`. All four use `inherits(x, "list")` as their entry test, so an object that fails that test answers `FALSE`.
+Each of the four predicates returns `TRUE` or `FALSE`, never `NA`. All four use `inherits(x, "list")` as their entry test, so an object that fails that test returns `FALSE`.
 
 ## Documentation
 
 Full reference and articles live at <https://niphr.github.io/csutil/>.
 
-Read the introduction vignette [here](https://niphr.github.io/csutil/articles/csutil.html) or run `help(package="csutil")`.
+Read the [introduction vignette](https://niphr.github.io/csutil/articles/csutil.html), or run `help(package="csutil")`.

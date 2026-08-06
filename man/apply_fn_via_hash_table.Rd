@@ -25,14 +25,14 @@ values, and maps the results back to the original vector. This avoids
 redundant computation when \code{x} contains many repeated values.
 }
 \details{
-\code{fn} is called exactly once, on the vector of unique values of
-\code{x}. It is not called once per element, and it is not called once per
-unique value either. \code{fn} must therefore be vectorised: it receives the
-whole vector of unique values in a single call.
+The function calls \code{fn} exactly once, on the vector of unique values of
+\code{x}. It does not call \code{fn} once per element. It does not call
+\code{fn} once per unique value either. \code{fn} MUST therefore be
+vectorised. It receives the whole vector of unique values in a single call.
 
-This can dramatically speed up computation if there is a lot of data and
-a limited number of unique values, because the work \code{fn} does scales
-with the number of unique values rather than with the length of \code{x}.
+This can dramatically speed up computation when there is a lot of data and
+a limited number of unique values. The work \code{fn} does scales with the
+number of unique values, not with the length of \code{x}.
 }
 \examples{
 x <- c("a", "b", "a", "c", "b", "a")

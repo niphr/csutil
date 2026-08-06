@@ -13,7 +13,8 @@ is_all_list_elements_null_or_list(x)
 \code{TRUE} or \code{FALSE}.
 }
 \description{
-Checks if A) `x` is a list, B) All elements in `x` are either null or list.
+Checks two things: that `x` is a list, and that all elements in `x` are
+`NULL` or lists.
 }
 \examples{
 is_all_list_elements_null_or_list(data.frame())

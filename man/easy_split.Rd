@@ -7,13 +7,13 @@
 easy_split(x, size_of_each_group = NULL, number_of_groups = NULL)
 }
 \arguments{
-\item{x}{The vector to be split.}
+\item{x}{The vector to split.}
 
 \item{size_of_each_group}{The number of elements in each group. The last
 group may hold fewer.}
 
-\item{number_of_groups}{The number of groups requested. Fewer groups than
-requested can be returned; see Details.}
+\item{number_of_groups}{The number of groups you request. The function can
+return fewer groups than you request. See Details.}
 }
 \value{
 A list of vectors, holding the elements of \code{x} in their original
@@ -21,20 +21,20 @@ A list of vectors, holding the elements of \code{x} in their original
   shorter.
 }
 \description{
-Splits \code{x} into a list of consecutive groups. Specify exactly one of
-\code{size_of_each_group} or \code{number_of_groups}; supplying neither, or
-supplying both, is an error.
+Splits \code{x} into a list of consecutive groups. You MUST specify exactly
+one of \code{size_of_each_group} or \code{number_of_groups}. Neither
+argument, or both arguments, is an error.
 }
 \details{
 Every group has the same length except the last, which may be shorter. The
-original order of \code{x} is preserved, and the list elements are named
-\code{"1"}, \code{"2"} and so on.
+function preserves the original order of \code{x}. It names the list
+elements \code{"1"}, \code{"2"} and so on.
 
-\code{number_of_groups} is a request, not a guarantee. The group size is
-computed as \code{ceiling(length(x) / number_of_groups)}, so the number of
-groups actually returned is
-\code{ceiling(length(x) / ceiling(length(x) / number_of_groups))}, which can
-be smaller than \code{number_of_groups}. For example,
+\code{number_of_groups} is a request, not a guarantee. The function computes
+the group size as \code{ceiling(length(x) / number_of_groups)}. The number
+of groups it returns is then
+\code{ceiling(length(x) / ceiling(length(x) / number_of_groups))}. That
+count can be smaller than \code{number_of_groups}. For example,
 \code{easy_split(1:4, number_of_groups = 3)} returns two groups of two.
 }
 \examples{

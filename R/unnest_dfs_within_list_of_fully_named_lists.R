@@ -1,23 +1,26 @@
 #' Unnest data.frames within fully named list
 #'
-#' Consider the situation where a function returns a list containing two data.frames.
-#' If this function is called repeatedly and the return values are stored in a list,
-#' we will have a list of fully named lists (each of which contains a data.frame).
-#' Typically, we want to extract the two data.frames from this nested list structure (and rbindlist them).
+#' Consider a function that returns a list of two data.frames. Call that
+#' function repeatedly and store each return value in a list. You then hold a
+#' list of fully named lists, and each inner list holds a data.frame.
+#' Typically you want the two data.frames out of that nested structure, row-bound
+#' with \code{data.table::rbindlist()}.
 #'
 #' @details
-#' When every element of \code{x} is \code{NULL} or a \code{data.frame}, those
-#' elements are row-bound into a single \code{data.table}, which is returned in
-#' a length-1 list named by \code{returned_name_when_dfs_are_not_nested}.
+#' When every element of \code{x} is \code{NULL} or a \code{data.frame}, the
+#' function row-binds those elements into a single \code{data.table}. It
+#' returns that table in a length-1 list, named by
+#' \code{returned_name_when_dfs_are_not_nested}.
 #'
-#' Otherwise every element of \code{x} must be \code{NULL} or a fully named
-#' list, and the function stops with an error if one of them is not. The
-#' returned list is named by the sorted union of the inner names, and each
-#' element is the \code{data.table::rbindlist()} of the inner elements that
-#' carry that name.
+#' Otherwise every element of \code{x} MUST be \code{NULL} or a fully named
+#' list. The function stops with an error if one element is not. The function
+#' names the returned list by the sorted union of the inner names. Each element
+#' is the \code{data.table::rbindlist()} of the inner elements that carry that
+#' name.
 #' @param x A list of fully named lists (which then contain data.frames)
-#' @param returned_name_when_dfs_are_not_nested When x is a single list of data.frames, what name should be returned?
-#' @param ... parameters passed to data.table::rbindlist
+#' @param returned_name_when_dfs_are_not_nested The name to give the returned
+#'   element when \code{x} is a single list of data.frames.
+#' @param ... Parameters passed to \code{data.table::rbindlist()}.
 #' @examples
 #' x <- list(
 #'   list(
