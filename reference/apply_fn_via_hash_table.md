@@ -33,14 +33,14 @@ from the value `fn` returns.
 
 ## Details
 
-`fn` is called exactly once, on the vector of unique values of `x`. It
-is not called once per element, and it is not called once per unique
-value either. `fn` must therefore be vectorised: it receives the whole
-vector of unique values in a single call.
+The function calls `fn` exactly once, on the vector of unique values of
+`x`. It does not call `fn` once per element. It does not call `fn` once
+per unique value either. `fn` MUST therefore be vectorised. It receives
+the whole vector of unique values in a single call.
 
-This can dramatically speed up computation if there is a lot of data and
-a limited number of unique values, because the work `fn` does scales
-with the number of unique values rather than with the length of `x`.
+This can dramatically speed up computation when there is a lot of data
+and a limited number of unique values. The work `fn` does scales with
+the number of unique values, not with the length of `x`.
 
 ## See also
 

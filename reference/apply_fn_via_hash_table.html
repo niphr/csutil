@@ -87,13 +87,13 @@ of <code>x</code>.</p></dd>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p><code>fn</code> is called exactly once, on the vector of unique values of
-<code>x</code>. It is not called once per element, and it is not called once per
-unique value either. <code>fn</code> must therefore be vectorised: it receives the
-whole vector of unique values in a single call.</p>
-<p>This can dramatically speed up computation if there is a lot of data and
-a limited number of unique values, because the work <code>fn</code> does scales
-with the number of unique values rather than with the length of <code>x</code>.</p>
+    <p>The function calls <code>fn</code> exactly once, on the vector of unique values of
+<code>x</code>. It does not call <code>fn</code> once per element. It does not call
+<code>fn</code> once per unique value either. <code>fn</code> MUST therefore be
+vectorised. It receives the whole vector of unique values in a single call.</p>
+<p>This can dramatically speed up computation when there is a lot of data and
+a limited number of unique values. The work <code>fn</code> does scales with the
+number of unique values, not with the length of <code>x</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

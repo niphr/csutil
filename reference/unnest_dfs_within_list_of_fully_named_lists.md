@@ -1,10 +1,11 @@
 # Unnest data.frames within fully named list
 
-Consider the situation where a function returns a list containing two
-data.frames. If this function is called repeatedly and the return values
-are stored in a list, we will have a list of fully named lists (each of
-which contains a data.frame). Typically, we want to extract the two
-data.frames from this nested list structure (and rbindlist them).
+Consider a function that returns a list of two data.frames. Call that
+function repeatedly and store each return value in a list. You then hold
+a list of fully named lists, and each inner list holds a data.frame.
+Typically you want the two data.frames out of that nested structure,
+row-bound with
+[`data.table::rbindlist()`](https://rdrr.io/pkg/data.table/man/rbindlist.html).
 
 ## Usage
 
@@ -24,11 +25,13 @@ unnest_dfs_within_list_of_fully_named_lists(
 
 - returned_name_when_dfs_are_not_nested:
 
-  When x is a single list of data.frames, what name should be returned?
+  The name to give the returned element when `x` is a single list of
+  data.frames.
 
 - ...:
 
-  parameters passed to data.table::rbindlist
+  Parameters passed to
+  [`data.table::rbindlist()`](https://rdrr.io/pkg/data.table/man/rbindlist.html).
 
 ## Value
 
@@ -37,13 +40,14 @@ list.
 
 ## Details
 
-When every element of `x` is `NULL` or a `data.frame`, those elements
-are row-bound into a single `data.table`, which is returned in a
-length-1 list named by `returned_name_when_dfs_are_not_nested`.
+When every element of `x` is `NULL` or a `data.frame`, the function
+row-binds those elements into a single `data.table`. It returns that
+table in a length-1 list, named by
+`returned_name_when_dfs_are_not_nested`.
 
-Otherwise every element of `x` must be `NULL` or a fully named list, and
-the function stops with an error if one of them is not. The returned
-list is named by the sorted union of the inner names, and each element
+Otherwise every element of `x` MUST be `NULL` or a fully named list. The
+function stops with an error if one element is not. The function names
+the returned list by the sorted union of the inner names. Each element
 is the
 [`data.table::rbindlist()`](https://rdrr.io/pkg/data.table/man/rbindlist.html)
 of the inner elements that carry that name.

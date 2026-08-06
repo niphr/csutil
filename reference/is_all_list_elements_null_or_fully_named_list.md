@@ -1,7 +1,7 @@
 # Are all elements in a list null or fully named lists?
 
-Checks if A) \`x\` is a list, B) All elements in \`x\` are either null
-or fully named lists.
+Checks two things: that \`x\` is a list, and that all elements in \`x\`
+are \`NULL\` or fully named lists.
 
 ## Usage
 
@@ -21,7 +21,7 @@ is_all_list_elements_null_or_fully_named_list(x)
 
 ## Details
 
-Fully named lists are lists with each element having a name.
+A fully named list is a list in which every element has a name.
 
 ## See also
 

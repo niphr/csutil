@@ -6,8 +6,8 @@
   promotes `vignettes/csutil.Rmd` to “Get started”, and that page
   previously began at `## Splitting` with no statement of what the
   package is for.
-- The overview states what csutil is for, groups all seven exports by
-  the question they answer, and records where csutil sits: `csdb`
+- The overview states what csutil is for, and groups all seven exports
+  by the question they answer. It also records where csutil sits: `csdb`
   imports `csutil`, and `csutil` imports no cs\* package.
 - The overview demonstrates two behaviours that surprise people, both
   with executed output.
@@ -15,14 +15,36 @@
   calls `fn` once on the whole vector of unique values, so a scalar-only
   `fn` errors.
   [`easy_split()`](https://niphr.github.io/csutil/reference/easy_split.md)
-  can return fewer groups than requested —
+  can return fewer groups than requested:
   `easy_split(1:4, number_of_groups = 3)` returns two.
 - No existing vignette section was changed or reordered.
+- Brought the prose in `R/`, `vignettes/`, `README.md`, `index.md` and
+  `NEWS.md` to the house standard: ASD-STE100 (Simplified Technical
+  English), adapted. Split the long sentences, removed the em dashes,
+  and capitalised the RFC-2119 keywords.
+  - Sentences over 25 words, measured per authored unit, before and
+    after:
+    - `R/`: 6 to 0.
+    - `vignettes/csutil.Rmd`: 2 to 1.
+    - `NEWS.md`: 3 to 0.
+    - `README.md` and `index.md`: 0 before and after.
+  - One sentence in `vignettes/csutil.Rmd` stays over the limit, in the
+    section “Applying a function via hash table”. It says `fn` runs
+    “once per unique value”, which contradicts both the code and the
+    same vignette’s own section “Two things that surprise people”. That
+    sentence needs a correction, not a split, so this pass left it
+    alone.
+  - Settled on one term for one concept: “unique values”, not “distinct
+    values”, in `README.md` and `vignettes/csutil.Rmd`.
+  - Regenerated `man/` from the edited roxygen. `NAMESPACE` is
+    unchanged, and all 7 help pages remain.
+- No code, documented function behaviour or documented number changed in
+  this version.
 
 ## Version 2026.8.4
 
-- `.Rbuildignore` now excludes `index.md` and `Rplots.pdf`, so the
-  pkgdown home page body no longer ships in the source tarball and no
+- `.Rbuildignore` now excludes `index.md` and `Rplots.pdf`. The pkgdown
+  home page body therefore no longer ships in the source tarball, and no
   longer raises a top-level-file `NOTE`.
 - Expanded `README.md` with installation, a quick start, and a table
   naming which function to reach for.
@@ -37,7 +59,7 @@
   [`easy_split()`](https://niphr.github.io/csutil/reference/easy_split.md):
   the documentation promised “equally sized vectors”. Every group has
   the same length except the last, which may be shorter.
-  `number_of_groups` is also a request rather than a guarantee —
+  `number_of_groups` is also a request rather than a guarantee:
   `easy_split(1:4, number_of_groups = 3)` returns two groups, not three.
 - Corrected
   [`unnest_dfs_within_list_of_fully_named_lists()`](https://niphr.github.io/csutil/reference/unnest_dfs_within_list_of_fully_named_lists.md):
@@ -62,9 +84,9 @@
 
 CRAN release: 2023-04-25
 
-- `apply_fn_via_hash_table` extracts the unique input values, applies
-  the given function to it to create a hash table (containing unique
-  input/output combinations), and then matches the original input to the
+- `apply_fn_via_hash_table` extracts the unique input values. It applies
+  the given function to those values to create a hash table of unique
+  input/output combinations. It then matches the original input to the
   hash table to obtain the desired output. This can dramatically speed
   up computation if there is a lot of data and a limited amount of
   unique values.

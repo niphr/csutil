@@ -1,7 +1,7 @@
 # Are all elements in a list null or data.frames?
 
-Checks if A) \`x\` is a list, B) All elements in \`x\` are either null
-or data.frame.
+Checks two things: that \`x\` is a list, and that all elements in \`x\`
+are \`NULL\` or data.frames.
 
 ## Usage
 

@@ -20,7 +20,7 @@ is_fully_named_list(x)
 
 ## Details
 
-The empty list is a special case: `is_fully_named_list(list())` returns
+The empty list is a special case. `is_fully_named_list(list())` returns
 `FALSE`, because a fully named list must have at least one element. The
 other three predicates in this family return `TRUE` for
 [`list()`](https://rdrr.io/r/base/list.html).

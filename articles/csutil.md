@@ -4,10 +4,13 @@
 
 Lists in base R are very flexible. That flexibility makes them awkward
 to check and awkward to take apart. csutil is a small set of helpers for
-four of those awkward jobs: splitting a vector into groups, pulling data
-frames out of a nested named list, checking what a list actually holds,
-and running a function on the distinct values of a vector instead of on
-every element.
+four of those awkward jobs:
+
+- splitting a vector into groups;
+- pulling data frames out of a nested named list;
+- checking what a list actually holds;
+- running a function on the unique values of a vector instead of on
+  every element.
 
 The package is deliberately tiny. It has seven exported functions and
 nothing else.
@@ -29,14 +32,14 @@ nothing else.
   flattens a list of named lists that hold data frames. Elements that
   share a name are row-bound together.
 - [`apply_fn_via_hash_table()`](https://niphr.github.io/csutil/reference/apply_fn_via_hash_table.md)
-  computes a result for the distinct values of a vector, then maps it
-  back to the original vector.
+  computes a result for the unique values of a vector, then maps it back
+  to the original vector.
 
 ## Two things that surprise people
 
 **[`apply_fn_via_hash_table()`](https://niphr.github.io/csutil/reference/apply_fn_via_hash_table.md)
 calls your function once, not once per value.** It hands the whole
-vector of distinct values over in a single call. Your function must
+vector of unique values over in a single call. Your function MUST
 therefore be vectorised. Here is a counter that proves it:
 
 ``` r
@@ -59,7 +62,7 @@ counter$calls
 #> [1] 1
 ```
 
-Five elements, three distinct values, one call.
+Five elements, three unique values, one call.
 
 A function that only handles one value at a time will fail:
 
@@ -78,8 +81,8 @@ tryCatch(
 
 **[`easy_split()`](https://niphr.github.io/csutil/reference/easy_split.md)
 can return fewer groups than you asked for.** `number_of_groups` is a
-request, not a promise. The group size is worked out first, as
-`ceiling(length(x) / number_of_groups)`, and the number of groups falls
+request, not a guarantee. The function works out the group size first,
+as `ceiling(length(x) / number_of_groups)`. The number of groups falls
 out of that. Ask for three groups from a four-element vector and you get
 two:
 
@@ -102,8 +105,8 @@ magrittr and ggplot2.
 ## Splitting
 
 [`easy_split()`](https://niphr.github.io/csutil/reference/easy_split.md)
-divides a vector into groups either by specifying the target size of
-each group or the total number of groups.
+divides a vector into groups. Give it either the target size of each
+group or the total number of groups.
 
 ``` r
 csutil::easy_split(letters[1:20], size_of_each_group = 3)
@@ -141,7 +144,7 @@ csutil::easy_split(letters[1:20], number_of_groups = 3)
 ## Unnesting data frames within a list
 
 [`unnest_dfs_within_list_of_fully_named_lists()`](https://niphr.github.io/csutil/reference/unnest_dfs_within_list_of_fully_named_lists.md)
-collapses a list of named lists, each containing data frames, into a
+collapses a list of named lists, each of which holds data frames, into a
 single flat list. Elements that share a name across the outer lists are
 row-bound together.
 
@@ -230,11 +233,12 @@ csutil::is_all_list_elements_null_or_fully_named_list(list(list("a" = 1), NULL))
 ## Applying a function via hash table
 
 [`apply_fn_via_hash_table()`](https://niphr.github.io/csutil/reference/apply_fn_via_hash_table.md)
-extracts the unique values from the input, applies the given function
-once per unique value to build a lookup table, then maps the results
-back to the original input. When there are many repeated values, this
-avoids redundant computation and can be substantially faster than
-applying the function element-wise.
+extracts the unique values from the input. It calls the given function
+ONCE, on that whole vector of unique values, to build a lookup table. It
+then maps the results back to the original input. Your function MUST
+therefore be vectorised, as the counter above shows. When many values
+repeat, this avoids redundant computation and can be much faster than
+applying the function element by element.
 
 ``` r
 input <- rep(seq(as.Date("2000-01-01"), as.Date("2020-01-01"), 1), 1000)
@@ -242,7 +246,7 @@ a1 <- Sys.time()
 z <- format(input, "%Y")
 a2 <- Sys.time()
 a2 - a1
-#> Time difference of 2.307858 secs
+#> Time difference of 1.881484 secs
 
 b1 <- Sys.time()
 z <- csutil::apply_fn_via_hash_table(
@@ -252,5 +256,5 @@ z <- csutil::apply_fn_via_hash_table(
 )
 b2 <- Sys.time()
 b2 - b1
-#> Time difference of 0.3945608 secs
+#> Time difference of 0.3288012 secs
 ```

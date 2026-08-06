@@ -1,8 +1,8 @@
 # Split a vector into a list of vectors
 
-Splits `x` into a list of consecutive groups. Specify exactly one of
-`size_of_each_group` or `number_of_groups`; supplying neither, or
-supplying both, is an error.
+Splits `x` into a list of consecutive groups. You MUST specify exactly
+one of `size_of_each_group` or `number_of_groups`. Neither argument, or
+both arguments, is an error.
 
 ## Usage
 
@@ -14,7 +14,7 @@ easy_split(x, size_of_each_group = NULL, number_of_groups = NULL)
 
 - x:
 
-  The vector to be split.
+  The vector to split.
 
 - size_of_each_group:
 
@@ -22,8 +22,8 @@ easy_split(x, size_of_each_group = NULL, number_of_groups = NULL)
 
 - number_of_groups:
 
-  The number of groups requested. Fewer groups than requested can be
-  returned; see Details.
+  The number of groups you request. The function can return fewer groups
+  than you request. See Details.
 
 ## Value
 
@@ -33,14 +33,14 @@ Every element has the same length except the last, which may be shorter.
 ## Details
 
 Every group has the same length except the last, which may be shorter.
-The original order of `x` is preserved, and the list elements are named
-`"1"`, `"2"` and so on.
+The function preserves the original order of `x`. It names the list
+elements `"1"`, `"2"` and so on.
 
-`number_of_groups` is a request, not a guarantee. The group size is
-computed as `ceiling(length(x) / number_of_groups)`, so the number of
-groups actually returned is
-`ceiling(length(x) / ceiling(length(x) / number_of_groups))`, which can
-be smaller than `number_of_groups`. For example,
+`number_of_groups` is a request, not a guarantee. The function computes
+the group size as `ceiling(length(x) / number_of_groups)`. The number of
+groups it returns is then
+`ceiling(length(x) / ceiling(length(x) / number_of_groups))`. That count
+can be smaller than `number_of_groups`. For example,
 `easy_split(1:4, number_of_groups = 3)` returns two groups of two.
 
 ## See also

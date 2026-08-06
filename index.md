@@ -5,16 +5,16 @@ Highlights
 ### List type predicates
 
 A family of `is_*` functions tests whether every element in a list is
-named, NULL, a data frame, or a nested list — no manual looping
-required.
+named, NULL, a data frame, or a nested list. You do not need a manual
+loop.
 
 02
 
 ### Equal-group splitting
 
 [`easy_split()`](https://niphr.github.io/csutil/reference/easy_split.md)
-divides any vector into balanced chunks by specifying either the target
-size of each group or the total number of groups.
+divides any vector into balanced chunks. Give it either the target size
+of each group or the total number of groups.
 
 03
 

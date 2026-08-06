@@ -88,10 +88,14 @@
 </h2>
 <p>Lists in base R are very flexible. That flexibility makes them
 awkward to check and awkward to take apart. csutil is a small set of
-helpers for four of those awkward jobs: splitting a vector into groups,
-pulling data frames out of a nested named list, checking what a list
-actually holds, and running a function on the distinct values of a
-vector instead of on every element.</p>
+helpers for four of those awkward jobs:</p>
+<ul>
+<li>splitting a vector into groups;</li>
+<li>pulling data frames out of a nested named list;</li>
+<li>checking what a list actually holds;</li>
+<li>running a function on the unique values of a vector instead of on
+every element.</li>
+</ul>
 <p>The package is deliberately tiny. It has seven exported functions and
 nothing else.</p>
 </div>
@@ -117,7 +121,7 @@ a list of named lists that hold data frames. Elements that share a name
 are row-bound together.</li>
 <li>
 <code><a href="../reference/apply_fn_via_hash_table.html">apply_fn_via_hash_table()</a></code> computes a result for the
-distinct values of a vector, then maps it back to the original
+unique values of a vector, then maps it back to the original
 vector.</li>
 </ul>
 </div>
@@ -125,8 +129,8 @@ vector.</li>
 <h2 id="two-things-that-surprise-people">Two things that surprise people<a class="anchor" aria-label="anchor" href="#two-things-that-surprise-people"></a>
 </h2>
 <p><strong><code><a href="../reference/apply_fn_via_hash_table.html">apply_fn_via_hash_table()</a></code> calls your function
-once, not once per value.</strong> It hands the whole vector of distinct
-values over in a single call. Your function must therefore be
+once, not once per value.</strong> It hands the whole vector of unique
+values over in a single call. Your function MUST therefore be
 vectorised. Here is a counter that proves it:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">counter</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/environment.html" class="external-link">new.env</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -146,7 +150,7 @@ vectorised. Here is a counter that proves it:</p>
 <span><span class="co">#&gt; [1] 3</span></span>
 <span><span class="va">counter</span><span class="op">$</span><span class="va">calls</span></span>
 <span><span class="co">#&gt; [1] 1</span></span></code></pre></div>
-<p>Five elements, three distinct values, one call.</p>
+<p>Five elements, three unique values, one call.</p>
 <p>A function that only handles one value at a time will fail:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">scalar_only</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">v</span><span class="op">)</span> <span class="op">{</span></span>
@@ -161,10 +165,10 @@ vectorised. Here is a counter that proves it:</p>
 <span><span class="co">#&gt; [1] "this function handles one value at a time"</span></span></code></pre></div>
 <p><strong><code><a href="../reference/easy_split.html">easy_split()</a></code> can return fewer groups than you
 asked for.</strong> <code>number_of_groups</code> is a request, not a
-promise. The group size is worked out first, as
-<code>ceiling(length(x) / number_of_groups)</code>, and the number of
-groups falls out of that. Ask for three groups from a four-element
-vector and you get two:</p>
+guarantee. The function works out the group size first, as
+<code>ceiling(length(x) / number_of_groups)</code>. The number of groups
+falls out of that. Ask for three groups from a four-element vector and
+you get two:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">csutil</span><span class="fu">::</span><span class="fu"><a href="../reference/easy_split.html">easy_split</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, number_of_groups <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $`1`</span></span>
@@ -184,9 +188,8 @@ magrittr and ggplot2.</p>
 <div class="section level2">
 <h2 id="splitting">Splitting<a class="anchor" aria-label="anchor" href="#splitting"></a>
 </h2>
-<p><code><a href="../reference/easy_split.html">easy_split()</a></code> divides a vector into groups either by
-specifying the target size of each group or the total number of
-groups.</p>
+<p><code><a href="../reference/easy_split.html">easy_split()</a></code> divides a vector into groups. Give it
+either the target size of each group or the total number of groups.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">csutil</span><span class="fu">::</span><span class="fu"><a href="../reference/easy_split.html">easy_split</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span><span class="op">]</span>, size_of_each_group <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $`1`</span></span>
@@ -223,9 +226,9 @@ groups.</p>
 <h2 id="unnesting-data-frames-within-a-list">Unnesting data frames within a list<a class="anchor" aria-label="anchor" href="#unnesting-data-frames-within-a-list"></a>
 </h2>
 <p><code><a href="../reference/unnest_dfs_within_list_of_fully_named_lists.html">unnest_dfs_within_list_of_fully_named_lists()</a></code> collapses
-a list of named lists, each containing data frames, into a single flat
-list. Elements that share a name across the outer lists are row-bound
-together.</p>
+a list of named lists, each of which holds data frames, into a single
+flat list. Elements that share a name across the outer lists are
+row-bound together.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
@@ -310,18 +313,19 @@ particular type.</p>
 <h2 id="applying-a-function-via-hash-table">Applying a function via hash table<a class="anchor" aria-label="anchor" href="#applying-a-function-via-hash-table"></a>
 </h2>
 <p><code><a href="../reference/apply_fn_via_hash_table.html">apply_fn_via_hash_table()</a></code> extracts the unique values
-from the input, applies the given function once per unique value to
-build a lookup table, then maps the results back to the original input.
-When there are many repeated values, this avoids redundant computation
-and can be substantially faster than applying the function
-element-wise.</p>
+from the input. It calls the given function ONCE, on that whole vector
+of unique values, to build a lookup table. It then maps the results back
+to the original input. Your function MUST therefore be vectorised, as
+the counter above shows. When many values repeat, this avoids redundant
+computation and can be much faster than applying the function element by
+element.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">input</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"2000-01-01"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"2020-01-01"</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span>, <span class="fl">1000</span><span class="op">)</span></span>
 <span><span class="va">a1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">input</span>, <span class="st">"%Y"</span><span class="op">)</span></span>
 <span><span class="va">a2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">a2</span> <span class="op">-</span> <span class="va">a1</span></span>
-<span><span class="co">#&gt; Time difference of 2.307858 secs</span></span>
+<span><span class="co">#&gt; Time difference of 1.881484 secs</span></span>
 <span></span>
 <span><span class="va">b1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu">csutil</span><span class="fu">::</span><span class="fu"><a href="../reference/apply_fn_via_hash_table.html">apply_fn_via_hash_table</a></span><span class="op">(</span></span>
@@ -331,7 +335,7 @@ element-wise.</p>
 <span><span class="op">)</span></span>
 <span><span class="va">b2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">b2</span> <span class="op">-</span> <span class="va">b1</span></span>
-<span><span class="co">#&gt; Time difference of 0.3945608 secs</span></span></code></pre></div>
+<span><span class="co">#&gt; Time difference of 0.3288012 secs</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

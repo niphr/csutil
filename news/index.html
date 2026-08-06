@@ -49,18 +49,34 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2026.8.6" id="version-202686">Version 2026.8.6<a class="anchor" aria-label="anchor" href="#version-202686"></a></h2>
 <ul><li>The <code>csutil</code> vignette now opens with a get-started overview. pkgdown promotes <code>vignettes/csutil.Rmd</code> to “Get started”, and that page previously began at <code>## Splitting</code> with no statement of what the package is for.</li>
-<li>The overview states what csutil is for, groups all seven exports by the question they answer, and records where csutil sits: <code>csdb</code> imports <code>csutil</code>, and <code>csutil</code> imports no cs* package.</li>
-<li>The overview demonstrates two behaviours that surprise people, both with executed output. <code><a href="../reference/apply_fn_via_hash_table.html">apply_fn_via_hash_table()</a></code> calls <code>fn</code> once on the whole vector of unique values, so a scalar-only <code>fn</code> errors. <code><a href="../reference/easy_split.html">easy_split()</a></code> can return fewer groups than requested — <code>easy_split(1:4, number_of_groups = 3)</code> returns two.</li>
+<li>The overview states what csutil is for, and groups all seven exports by the question they answer. It also records where csutil sits: <code>csdb</code> imports <code>csutil</code>, and <code>csutil</code> imports no cs* package.</li>
+<li>The overview demonstrates two behaviours that surprise people, both with executed output. <code><a href="../reference/apply_fn_via_hash_table.html">apply_fn_via_hash_table()</a></code> calls <code>fn</code> once on the whole vector of unique values, so a scalar-only <code>fn</code> errors. <code><a href="../reference/easy_split.html">easy_split()</a></code> can return fewer groups than requested: <code>easy_split(1:4, number_of_groups = 3)</code> returns two.</li>
 <li>No existing vignette section was changed or reordered.</li>
+<li>Brought the prose in <code>R/</code>, <code>vignettes/</code>, <code>README.md</code>, <code>index.md</code> and <code>NEWS.md</code> to the house standard: ASD-STE100 (Simplified Technical English), adapted. Split the long sentences, removed the em dashes, and capitalised the RFC-2119 keywords.
+<ul><li>Sentences over 25 words, measured per authored unit, before and after:
+<ul><li>
+<code>R/</code>: 6 to 0.</li>
+<li>
+<code>vignettes/csutil.Rmd</code>: 2 to 1.</li>
+<li>
+<code>NEWS.md</code>: 3 to 0.</li>
+<li>
+<code>README.md</code> and <code>index.md</code>: 0 before and after.</li>
+</ul></li>
+<li>One sentence in <code>vignettes/csutil.Rmd</code> stays over the limit, in the section “Applying a function via hash table”. It says <code>fn</code> runs “once per unique value”, which contradicts both the code and the same vignette’s own section “Two things that surprise people”. That sentence needs a correction, not a split, so this pass left it alone.</li>
+<li>Settled on one term for one concept: “unique values”, not “distinct values”, in <code>README.md</code> and <code>vignettes/csutil.Rmd</code>.</li>
+<li>Regenerated <code>man/</code> from the edited roxygen. <code>NAMESPACE</code> is unchanged, and all 7 help pages remain.</li>
+</ul></li>
+<li>No code, documented function behaviour or documented number changed in this version.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2026.8.4" id="version-202684">Version 2026.8.4<a class="anchor" aria-label="anchor" href="#version-202684"></a></h2>
 <ul><li>
-<code>.Rbuildignore</code> now excludes <code>index.md</code> and <code>Rplots.pdf</code>, so the pkgdown home page body no longer ships in the source tarball and no longer raises a top-level-file <code>NOTE</code>.</li>
+<code>.Rbuildignore</code> now excludes <code>index.md</code> and <code>Rplots.pdf</code>. The pkgdown home page body therefore no longer ships in the source tarball, and no longer raises a top-level-file <code>NOTE</code>.</li>
 <li>Expanded <code>README.md</code> with installation, a quick start, and a table naming which function to reach for.</li>
 <li>Every exported function now carries an <code>@seealso</code> pointing at the <code>csutil</code> vignette. All seven appear in a vignette code chunk.</li>
 <li>Corrected <code><a href="../reference/apply_fn_via_hash_table.html">apply_fn_via_hash_table()</a></code>: the documentation said <code>fn</code> was called once per unique value. It is called exactly once, on the whole vector of unique values, so <code>fn</code> must be vectorised.</li>
-<li>Corrected <code><a href="../reference/easy_split.html">easy_split()</a></code>: the documentation promised “equally sized vectors”. Every group has the same length except the last, which may be shorter. <code>number_of_groups</code> is also a request rather than a guarantee — <code>easy_split(1:4, number_of_groups = 3)</code> returns two groups, not three.</li>
+<li>Corrected <code><a href="../reference/easy_split.html">easy_split()</a></code>: the documentation promised “equally sized vectors”. Every group has the same length except the last, which may be shorter. <code>number_of_groups</code> is also a request rather than a guarantee: <code>easy_split(1:4, number_of_groups = 3)</code> returns two groups, not three.</li>
 <li>Corrected <code><a href="../reference/unnest_dfs_within_list_of_fully_named_lists.html">unnest_dfs_within_list_of_fully_named_lists()</a></code>: it returns <code>NULL</code> when <code>x</code> is not a list, which the <code>@return</code> section did not say. Documented both branches and the sorted-union naming of the result.</li>
 <li>Documented that <code>is_fully_named_list(list())</code> returns <code>FALSE</code>.</li>
 </ul></div>
@@ -74,7 +90,7 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2023.4.25" id="version-2023425">Version 2023.4.25<a class="anchor" aria-label="anchor" href="#version-2023425"></a></h2><p class="text-muted">CRAN release: 2023-04-25</p>
 <ul><li>
-<code>apply_fn_via_hash_table</code> extracts the unique input values, applies the given function to it to create a hash table (containing unique input/output combinations), and then matches the original input to the hash table to obtain the desired output. This can dramatically speed up computation if there is a lot of data and a limited amount of unique values.</li>
+<code>apply_fn_via_hash_table</code> extracts the unique input values. It applies the given function to those values to create a hash table of unique input/output combinations. It then matches the original input to the hash table to obtain the desired output. This can dramatically speed up computation if there is a lot of data and a limited amount of unique values.</li>
 <li>Submitted to CRAN</li>
 </ul></div>
     <div class="section level2">
