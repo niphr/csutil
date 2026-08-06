@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">csutil</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2026.8.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2026.8.6</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,6 +46,13 @@
       <small>Source: <a href="https://github.com/niphr/csutil/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="2026.8.6" id="version-202686">Version 2026.8.6<a class="anchor" aria-label="anchor" href="#version-202686"></a></h2>
+<ul><li>The <code>csutil</code> vignette now opens with a get-started overview. pkgdown promotes <code>vignettes/csutil.Rmd</code> to “Get started”, and that page previously began at <code>## Splitting</code> with no statement of what the package is for.</li>
+<li>The overview states what csutil is for, groups all seven exports by the question they answer, and records where csutil sits: <code>csdb</code> imports <code>csutil</code>, and <code>csutil</code> imports no cs* package.</li>
+<li>The overview demonstrates two behaviours that surprise people, both with executed output. <code><a href="../reference/apply_fn_via_hash_table.html">apply_fn_via_hash_table()</a></code> calls <code>fn</code> once on the whole vector of unique values, so a scalar-only <code>fn</code> errors. <code><a href="../reference/easy_split.html">easy_split()</a></code> can return fewer groups than requested — <code>easy_split(1:4, number_of_groups = 3)</code> returns two.</li>
+<li>No existing vignette section was changed or reordered.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2026.8.4" id="version-202684">Version 2026.8.4<a class="anchor" aria-label="anchor" href="#version-202684"></a></h2>
 <ul><li>

@@ -1,5 +1,24 @@
 # Changelog
 
+## Version 2026.8.6
+
+- The `csutil` vignette now opens with a get-started overview. pkgdown
+  promotes `vignettes/csutil.Rmd` to “Get started”, and that page
+  previously began at `## Splitting` with no statement of what the
+  package is for.
+- The overview states what csutil is for, groups all seven exports by
+  the question they answer, and records where csutil sits: `csdb`
+  imports `csutil`, and `csutil` imports no cs\* package.
+- The overview demonstrates two behaviours that surprise people, both
+  with executed output.
+  [`apply_fn_via_hash_table()`](https://niphr.github.io/csutil/reference/apply_fn_via_hash_table.md)
+  calls `fn` once on the whole vector of unique values, so a scalar-only
+  `fn` errors.
+  [`easy_split()`](https://niphr.github.io/csutil/reference/easy_split.md)
+  can return fewer groups than requested —
+  `easy_split(1:4, number_of_groups = 3)` returns two.
+- No existing vignette section was changed or reordered.
+
 ## Version 2026.8.4
 
 - `.Rbuildignore` now excludes `index.md` and `Rplots.pdf`, so the
