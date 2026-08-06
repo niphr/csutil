@@ -9,7 +9,7 @@
     )
 
   packageStartupMessage(paste0(
-    "cstil ",
+    "csutil ",
     version,
     "\n",
     "https://niphr.github.io/csutil/"

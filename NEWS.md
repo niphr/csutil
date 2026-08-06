@@ -1,5 +1,10 @@
 # Version 2026.8.6
 
+## Bug fix
+
+- The startup message printed `cstil`, not `csutil`. It has said so since the
+  message was added. This is the only executable line this release changes.
+
 - The `csutil` vignette now opens with a get-started overview. pkgdown promotes `vignettes/csutil.Rmd` to "Get started", and that page previously began at `## Splitting` with no statement of what the package is for.
 - The overview states what csutil is for, and groups all seven exports by the question they answer. It also records where csutil sits: `csdb` imports `csutil`, and `csutil` imports no cs* package.
 - The overview demonstrates two behaviours that surprise people, both with executed output. `apply_fn_via_hash_table()` calls `fn` once on the whole vector of unique values, so a scalar-only `fn` errors. `easy_split()` can return fewer groups than requested: `easy_split(1:4, number_of_groups = 3)` returns two.
