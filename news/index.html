@@ -48,11 +48,15 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2026.8.6" id="version-202686">Version 2026.8.6<a class="anchor" aria-label="anchor" href="#version-202686"></a></h2>
-<ul><li>The <code>csutil</code> vignette now opens with a get-started overview. pkgdown promotes <code>vignettes/csutil.Rmd</code> to “Get started”, and that page previously began at <code>## Splitting</code> with no statement of what the package is for.</li>
-<li>The overview states what csutil is for, and groups all seven exports by the question they answer. It also records where csutil sits: <code>csdb</code> imports <code>csutil</code>, and <code>csutil</code> imports no cs* package.</li>
-<li>The overview demonstrates two behaviours that surprise people, both with executed output. <code><a href="../reference/apply_fn_via_hash_table.html">apply_fn_via_hash_table()</a></code> calls <code>fn</code> once on the whole vector of unique values, so a scalar-only <code>fn</code> errors. <code><a href="../reference/easy_split.html">easy_split()</a></code> can return fewer groups than requested: <code>easy_split(1:4, number_of_groups = 3)</code> returns two.</li>
-<li>No existing vignette section was changed or reordered.</li>
-<li>Brought the prose in <code>R/</code>, <code>vignettes/</code>, <code>README.md</code>, <code>index.md</code> and <code>NEWS.md</code> to the house standard: ASD-STE100 (Simplified Technical English), adapted. Split the long sentences, removed the em dashes, and capitalised the RFC-2119 keywords.
+<div class="section level3">
+<h3 id="bug-fix-2026-8-6">Bug fix<a class="anchor" aria-label="anchor" href="#bug-fix-2026-8-6"></a></h3>
+<ul><li><p>The startup message printed <code>cstil</code>, not <code>csutil</code>. It has said so since the message was added. This is the only executable line this release changes.</p></li>
+<li><p>The <code>csutil</code> vignette now opens with a get-started overview. pkgdown promotes <code>vignettes/csutil.Rmd</code> to “Get started”, and that page previously began at <code>## Splitting</code> with no statement of what the package is for.</p></li>
+<li><p>The overview states what csutil is for, and groups all seven exports by the question they answer. It also records where csutil sits: <code>csdb</code> imports <code>csutil</code>, and <code>csutil</code> imports no cs* package.</p></li>
+<li><p>The overview demonstrates two behaviours that surprise people, both with executed output. <code><a href="../reference/apply_fn_via_hash_table.html">apply_fn_via_hash_table()</a></code> calls <code>fn</code> once on the whole vector of unique values, so a scalar-only <code>fn</code> errors. <code><a href="../reference/easy_split.html">easy_split()</a></code> can return fewer groups than requested: <code>easy_split(1:4, number_of_groups = 3)</code> returns two.</p></li>
+<li><p>No existing vignette section was changed or reordered.</p></li>
+<li>
+<p>Brought the prose in <code>R/</code>, <code>vignettes/</code>, <code>README.md</code>, <code>index.md</code> and <code>NEWS.md</code> to the house standard: ASD-STE100 (Simplified Technical English), adapted. Split the long sentences, removed the em dashes, and capitalised the RFC-2119 keywords.</p>
 <ul><li>Sentences over 25 words, measured per authored unit, before and after:
 <ul><li>
 <code>R/</code>: 6 to 0.</li>
@@ -67,8 +71,9 @@
 <li>Settled on one term for one concept: “unique values”, not “distinct values”, in <code>README.md</code> and <code>vignettes/csutil.Rmd</code>.</li>
 <li>Regenerated <code>man/</code> from the edited roxygen. <code>NAMESPACE</code> is unchanged, and all 7 help pages remain.</li>
 </ul></li>
-<li>No code, documented function behaviour or documented number changed in this version.</li>
+<li><p>No code, documented function behaviour or documented number changed in this version.</p></li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2026.8.4" id="version-202684">Version 2026.8.4<a class="anchor" aria-label="anchor" href="#version-202684"></a></h2>
 <ul><li>
