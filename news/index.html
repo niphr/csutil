@@ -49,6 +49,15 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2026.8.6" id="version-202686">Version 2026.8.6<a class="anchor" aria-label="anchor" href="#version-202686"></a></h2>
 <div class="section level3">
+<h3 id="licensing-2026-8-6">Licensing<a class="anchor" aria-label="anchor" href="#licensing-2026-8-6"></a></h3>
+<ul><li>The copyright holder is now <strong>Folkehelseinstituttet</strong>. It read “Core Surveillance”, which names the package family rather than a legal entity.</li>
+<li>
+<code>DESCRIPTION</code> <code>Authors@R</code> now declares that holder with <code>role = "cph"</code>. It declared no copyright holder at all, and neither did any other package in the fleet. Nothing in <code>R CMD check</code> reports that.</li>
+<li>The copyright year is now 2026. It read 2023.</li>
+<li>
+<code>CLAUDE.md</code> now carries a Licensing section, so the year gets checked rather than silently ageing.</li>
+</ul></div>
+<div class="section level3">
 <h3 id="bug-fix-2026-8-6">Bug fix<a class="anchor" aria-label="anchor" href="#bug-fix-2026-8-6"></a></h3>
 <ul><li><p>The startup message printed <code>cstil</code>, not <code>csutil</code>. It has said so since the message was added. This is the only executable line this release changes.</p></li>
 <li><p>The <code>csutil</code> vignette now opens with a get-started overview. pkgdown promotes <code>vignettes/csutil.Rmd</code> to “Get started”, and that page previously began at <code>## Splitting</code> with no statement of what the package is for.</p></li>

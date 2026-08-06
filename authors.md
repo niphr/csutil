@@ -7,6 +7,8 @@ This package is proudly brought to you by:
 - **[Richard Aubrey White](https://www.rwhite.no)**. Author, maintainer.
   [](https://orcid.org/0000-0002-6747-1726)
 
+- **Folkehelseinstituttet**. Copyright holder.
+
 See the [changelog](https://niphr.github.io/csutil/news/index.md) for
 other contributors. 🙏
 
