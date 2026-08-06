@@ -1,5 +1,16 @@
 # Version 2026.8.6
 
+## Licensing
+
+- The copyright holder is now **Folkehelseinstituttet**. It read "Core Surveillance", which
+  names the package family rather than a legal entity.
+- `DESCRIPTION` `Authors@R` now declares that holder with `role = "cph"`.
+  It declared no copyright holder at all, and neither did any other package
+  in the fleet. Nothing in `R CMD check` reports that.
+- The copyright year is now 2026. It read 2023.
+- `CLAUDE.md` now carries a Licensing section, so the year gets checked
+  rather than silently ageing.
+
 ## Bug fix
 
 - The startup message printed `cstil`, not `csutil`. It has said so since the

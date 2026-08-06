@@ -12,3 +12,4 @@ license.md
 ^Rplots\.pdf$
 ^Meta$
 @eaDir
+^CLAUDE\.md$

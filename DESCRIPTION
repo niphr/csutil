@@ -1,9 +1,20 @@
 Package: csutil
 Title: Common Base-R Problems Relating to Lists
 Version: 2026.8.6
-Authors@R: c(
-  person(c("Richard","Aubrey"), "White", email = "hello@rwhite.no", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-6747-1726"))
-  )
+Authors@R:
+    c(
+      person(
+        given = c("Richard", "Aubrey"),
+        family = "White",
+        email = "hello@rwhite.no",
+        role = c("aut", "cre"),
+        comment = c(ORCID = "0000-0002-6747-1726")
+      ),
+      person(
+        given = "Folkehelseinstituttet",
+        role = "cph"
+      )
+    )
 Description: Utility functions that help with common base-R problems relating to lists.
     Lists in base-R are very flexible. This package provides functions to quickly and easily
     characterize types of lists. That is, to identify if all elements in a list
