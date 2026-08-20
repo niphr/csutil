@@ -11,4 +11,4 @@ jobs:
   r-package:
     permissions:
       contents: write
-    uses: niphr/cstemplate/.github/workflows/r-package.yml@5c082c5c84440f6d3b43fd97fa2cfda87924279e
+    uses: niphr/cstemplate/.github/workflows/r-package.yml@8f8f2ad878710d6d9d3d5ee91ec7a566f8e34683
