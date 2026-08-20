@@ -1,6 +1,6 @@
 Package: csutil
 Title: Common Base-R Problems Relating to Lists
-Version: 2026.8.6
+Version: 2026.8.20
 Authors@R:
     c(
       person(

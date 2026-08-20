@@ -1,3 +1,12 @@
+# Version 2026.8.20
+
+- `.Rbuildignore` excludes `.github`. The workflow directory shipped inside the
+  tarball, and `R CMD check --as-cran` reported it as a hidden file for as long
+  as the directory has existed. The shared CI workflow does not fail on a note,
+  so the check stayed green and the note went unread.
+- The version is bumped because the tarball changed. `2026.8.6` was already
+  published from an earlier tree, and one version number must not name two.
+
 # Version 2026.8.6
 
 ## Licensing

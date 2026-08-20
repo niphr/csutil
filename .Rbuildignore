@@ -13,3 +13,4 @@ license.md
 ^Meta$
 @eaDir
 ^CLAUDE\.md$
+^\.github$
