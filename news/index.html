@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">csutil</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2026.8.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2026.8.20</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,6 +46,12 @@
       <small>Source: <a href="https://github.com/niphr/csutil/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="2026.8.20" id="version-2026820">Version 2026.8.20<a class="anchor" aria-label="anchor" href="#version-2026820"></a></h2>
+<ul><li>
+<code>.Rbuildignore</code> excludes <code>.github</code>. The workflow directory shipped inside the tarball, and <code>R CMD check --as-cran</code> reported it as a hidden file for as long as the directory has existed. The shared CI workflow does not fail on a note, so the check stayed green and the note went unread.</li>
+<li>The version is bumped because the tarball changed. <code>2026.8.6</code> was already published from an earlier tree, and one version number must not name two.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2026.8.6" id="version-202686">Version 2026.8.6<a class="anchor" aria-label="anchor" href="#version-202686"></a></h2>
 <div class="section level3">
