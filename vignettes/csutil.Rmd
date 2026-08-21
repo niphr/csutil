@@ -88,7 +88,7 @@ Every group has the same length except the last, which may be shorter.
 
 ## Where csutil sits
 
-csdb imports csutil. csutil imports no cs\* package, only data.table, magrittr and ggplot2.
+csdb imports csutil. csutil imports no cs\* package, only data.table and ggplot2.
 
 ## Splitting
 
