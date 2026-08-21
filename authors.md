@@ -18,12 +18,12 @@ Source:
 [`DESCRIPTION`](https://github.com/niphr/csutil/blob/main/DESCRIPTION)
 
 White RA (2026). *csutil: Common Base-R Problems Relating to Lists*. R
-package version 2026.8.21, <https://niphr.github.io/csutil/>.
+package version 2026.8.22, <https://niphr.github.io/csutil/>.
 
     @Manual{,
       title = {csutil: Common Base-R Problems Relating to Lists},
       author = {Richard Aubrey White},
       year = {2026},
-      note = {R package version 2026.8.21},
+      note = {R package version 2026.8.22},
       url = {https://niphr.github.io/csutil/},
     }

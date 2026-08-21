@@ -99,8 +99,8 @@ Every group has the same length except the last, which may be shorter.
 
 ## Where csutil sits
 
-csdb imports csutil. csutil imports no cs\* package, only data.table,
-magrittr and ggplot2.
+csdb imports csutil. csutil imports no cs\* package, only data.table and
+ggplot2.
 
 ## Splitting
 
@@ -246,7 +246,7 @@ a1 <- Sys.time()
 z <- format(input, "%Y")
 a2 <- Sys.time()
 a2 - a1
-#> Time difference of 2.177211 secs
+#> Time difference of 2.367494 secs
 
 b1 <- Sys.time()
 z <- csutil::apply_fn_via_hash_table(
@@ -256,5 +256,5 @@ z <- csutil::apply_fn_via_hash_table(
 )
 b2 <- Sys.time()
 b2 - b1
-#> Time difference of 0.3704221 secs
+#> Time difference of 0.4004824 secs
 ```

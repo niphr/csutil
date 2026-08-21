@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 2026.8.22
+
+- The “Where csutil sits” section said csutil imports `magrittr`. It
+  does not, and has not since the base pipe migration. Its `Imports`
+  field is `data.table` and `ggplot2`.
+
 ## Version 2026.8.21
 
 - The package drops `magrittr`. Every `%>%` is now the base pipe `|>`,
