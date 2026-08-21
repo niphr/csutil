@@ -1,6 +1,6 @@
 Package: csutil
 Title: Common Base-R Problems Relating to Lists
-Version: 2026.8.20
+Version: 2026.8.21
 Authors@R:
     c(
       person(
@@ -27,7 +27,6 @@ URL: https://niphr.github.io/csutil/, https://github.com/niphr/csutil
 BugReports: https://github.com/niphr/csutil/issues
 Encoding: UTF-8
 Imports: data.table,
-    magrittr,
     ggplot2
 Suggests: testthat,
     knitr,
