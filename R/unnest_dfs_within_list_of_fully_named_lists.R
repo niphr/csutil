@@ -69,7 +69,10 @@ unnest_dfs_within_list_of_fully_named_lists <- function(
     return(retval)
   }
   if (!is_all_list_elements_null_or_fully_named_list(x)) {
-    stop("All list elements must be either null or a fully named list")
+    stop(
+      "All list elements must be either null or a fully named list",
+      call. = FALSE
+    )
   }
 
   list_names <- lapply(x, function(y) names(y))

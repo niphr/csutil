@@ -21,7 +21,7 @@ is_fully_named_list <- function(x) {
   if (inherits(x, "list")) {
     n <- names(x)
     n <- n[n != ""]
-    if (length(n) == length(x) & length(n) > 0) {
+    if (length(n) == length(x) && length(n) > 0) {
       return(TRUE)
     } else {
       return(FALSE)

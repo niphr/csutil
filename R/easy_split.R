@@ -33,11 +33,17 @@
 #'   \code{letters[1:20]} both ways.
 #' @export
 easy_split <- function(x, size_of_each_group = NULL, number_of_groups = NULL) {
-  if (is.null(size_of_each_group) & is.null(number_of_groups)) {
-    stop("you must specify ONE of size_of_each_group OR number_of_groups")
+  if (is.null(size_of_each_group) && is.null(number_of_groups)) {
+    stop(
+      "you must specify ONE of size_of_each_group OR number_of_groups",
+      call. = FALSE
+    )
   }
-  if (!is.null(size_of_each_group) & !is.null(number_of_groups)) {
-    stop("you must specify ONE of size_of_each_group OR number_of_groups")
+  if (!is.null(size_of_each_group) && !is.null(number_of_groups)) {
+    stop(
+      "you must specify ONE of size_of_each_group OR number_of_groups",
+      call. = FALSE
+    )
   }
 
   if (!is.null(size_of_each_group)) {
@@ -48,7 +54,7 @@ easy_split <- function(x, size_of_each_group = NULL, number_of_groups = NULL) {
     splitting_index <- rep(
       1:number_of_groups,
       each = ceiling(length(x) / number_of_groups)
-    )[1:length(x)]
+    )[seq_along(x)]
     return(split(x, splitting_index))
   }
 }

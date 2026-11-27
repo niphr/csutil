@@ -1,3 +1,12 @@
+# Version 2026.11.27
+
+- The package passes the lint gate of the shared CI workflow. The 8 lints were
+  1 `return_linter`, 3 `condition_call_linter`, 1 `seq_linter` and 3
+  `vector_logic_linter` findings.
+- The errors from `easy_split()` and
+  `unnest_dfs_within_list_of_fully_named_lists()` no longer show the call. The
+  error message text does not change.
+
 # Version 2026.8.22
 
 - The "Where csutil sits" section said csutil imports `magrittr`. It does not,
